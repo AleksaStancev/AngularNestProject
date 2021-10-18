@@ -1,0 +1,12 @@
+@import "form-shared";
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+app-button {
+  margin: 5px;
+}

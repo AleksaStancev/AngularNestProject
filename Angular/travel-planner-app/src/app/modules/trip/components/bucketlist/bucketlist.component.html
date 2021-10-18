@@ -1,0 +1,43 @@
+<app-trip-form
+  title="Bucketlist"
+  [tripFormContentTemplate]="tripFormContentTemplate"
+  [formFormGroup]="bucketlistForm"
+>
+</app-trip-form>
+
+<ng-template #tripFormContentTemplate>
+  <div class="content-template">
+    <div class="input-container">
+      <app-form-input
+        label="Trip name"
+        placeholder="Trip name"
+        inputFormControlName="tripName"
+        [parentFormGroup]="bucketlistForm"
+        maxLength="30"
+      ></app-form-input>
+      <app-form-input
+        label="Destination country"
+        placeholder="Destination country"
+        inputFormControlName="destinationCountry"
+        [parentFormGroup]="bucketlistForm"
+        maxLength="30"
+      ></app-form-input>
+      <app-form-input
+        label="Destination in country"
+        placeholder="Destination in country"
+        inputFormControlName="destinationInCountry"
+        [parentFormGroup]="bucketlistForm"
+        maxLength="30"
+      ></app-form-input>
+    </div>
+    <div class="input-container">
+      <app-form-input
+        label="Bucketlist notes"
+        placeholder="Bucketlist notes"
+        inputFormControlName="bucketlistNotes"
+        [parentFormGroup]="bucketlistForm"
+        [formInputType]="formInputTypesProvider.formInputTypes.textArea"
+      ></app-form-input>
+    </div>
+  </div>
+</ng-template>

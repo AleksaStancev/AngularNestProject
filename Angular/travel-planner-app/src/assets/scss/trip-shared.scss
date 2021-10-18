@@ -1,0 +1,24 @@
+.content-template {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+app-form-input,
+app-form-date-range,
+app-form-checklist-with-sections {
+  flex-grow: 1;
+  margin: 5px;
+  min-width: 270px;
+}
+app-form-checklist-with-sections {
+  max-width: 90%;
+}

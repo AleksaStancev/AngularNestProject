@@ -1,0 +1,27 @@
+<app-trip-form
+  [title]="tripName"
+  [formFormGroup]="inProgressForm"
+  [tripFormContentTemplate]="tripFormContentTemplate"
+>
+</app-trip-form>
+
+<ng-template #tripFormContentTemplate>
+  <div class="content-template">
+    <div class="input-container">
+      <app-form-input
+        label="In progress notes"
+        placeholder="In progress notes"
+        inputFormControlName="inProgressNotes"
+        [parentFormGroup]="inProgressForm"
+        [formInputType]="formInputTypesProvider.formInputTypes.textArea"
+      ></app-form-input>
+    </div>
+    <div class="input-container">
+      <app-form-checklist-with-sections
+        title="Trip activities"
+        [formControl]="tripActivitiesFormControl"
+        [height]="400"
+      ></app-form-checklist-with-sections>
+    </div>
+  </div>
+</ng-template>

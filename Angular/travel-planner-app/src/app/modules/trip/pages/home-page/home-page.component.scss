@@ -1,0 +1,29 @@
+@import "shared";
+
+.list-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+app-trip-list,
+app-plans,
+app-bucketlist {
+  min-width: 300px;
+  margin: 10px;
+}
+
+app-bucketlist,
+app-plans,
+app-in-progress {
+  width: 80%;
+}
+
+.form-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+}

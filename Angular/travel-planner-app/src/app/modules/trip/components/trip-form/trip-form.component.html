@@ -1,0 +1,17 @@
+<app-form
+  [titleTemplate]="titleTemplate"
+  [contentTemplate]="contentTemplate"
+  [actionsTemplate]="actionsTemplate"
+  [formFormGroup]="formFormGroup"
+>
+</app-form>
+
+<ng-template #titleTemplate>{{ title }}</ng-template>
+
+<ng-template #contentTemplate>
+  <ng-container [ngTemplateOutlet]="tripFormContentTemplate"></ng-container>
+</ng-template>
+
+<ng-template #actionsTemplate>
+  <app-button-group></app-button-group>
+</ng-template>

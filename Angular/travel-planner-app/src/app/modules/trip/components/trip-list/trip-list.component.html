@@ -1,0 +1,25 @@
+<app-mat-card
+  [titleTemplate]="titleTemplate"
+  [contentTemplate]="contentTemplate"
+  [actionsTemplate]="actionsTemplate"
+>
+</app-mat-card>
+
+<ng-template #titleTemplate>
+  {{ title }}
+</ng-template>
+
+<ng-template #contentTemplate>
+  <app-select-list
+    [items]="trips"
+    [listItemTemplate]="listItemTemplate"
+  ></app-select-list>
+</ng-template>
+
+<ng-template #actionsTemplate>
+  <app-button buttonText="Add trip" [buttonOnClick]="addItem"></app-button>
+</ng-template>
+
+<ng-template #listItemTemplate let-listItem="listItem">
+  {{ listItem }}
+</ng-template>

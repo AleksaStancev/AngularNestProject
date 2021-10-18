@@ -1,0 +1,67 @@
+<app-trip-form
+  [title]="tripName"
+  [tripFormContentTemplate]="tripContentTemplate"
+  [formFormGroup]="plansForm"
+></app-trip-form>
+
+<ng-template #tripContentTemplate>
+  <div class="content-template">
+    <div class="input-container">
+      <app-form-input
+        label="Trip budget (€)"
+        placeholder="0"
+        inputFormControlName="tripBudget"
+        [parentFormGroup]="plansForm"
+        [formInputType]="formInputTypesProvider.formInputTypes.number"
+        [inputValidationErrorMessages]="
+          validationErrorMessageProvider.tripBudgetErrorMessages
+        "
+      ></app-form-input>
+      <app-form-date-range
+        label="Trip duration"
+        [parentFormGroup]="plansForm"
+        endDateFormControlName="endDate"
+        startDateFormControlName="startDate"
+      ></app-form-date-range>
+    </div>
+
+    <div class="input-container">
+      <app-form-input
+        label="Planning notes"
+        placeholder="Planning notes"
+        inputFormControlName="planningNotes"
+        [parentFormGroup]="plansForm"
+        [formInputType]="formInputTypesProvider.formInputTypes.textArea"
+      ></app-form-input>
+    </div>
+    <div class="input-container">
+      <app-form-checklist-with-sections
+        title="Needed documents"
+        [formControl]="neededDocumentsFormControl"
+        [height]="400"
+      ></app-form-checklist-with-sections>
+    </div>
+    <div class="input-container">
+      <app-form-checklist-with-sections
+        title="Packing"
+        [formControl]="packingListFormControl"
+        [height]="400"
+      ></app-form-checklist-with-sections>
+    </div>
+    <div class="input-container">
+      <app-form-checklist-with-sections
+        title="Transport"
+        [formControl]="transportListFormControl"
+        [height]="400"
+      ></app-form-checklist-with-sections>
+    </div>
+    <div class="input-container">
+      <app-form-checklist-with-sections
+        title="Trip activities"
+        [formControl]="tripActivitiesFormControl"
+        [height]="400"
+        [showCheckboxes]="false"
+      ></app-form-checklist-with-sections>
+    </div>
+  </div>
+</ng-template>
