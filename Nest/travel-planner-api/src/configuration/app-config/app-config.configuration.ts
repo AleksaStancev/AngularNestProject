@@ -4,4 +4,5 @@ export default registerAs('app', () => ({
   name: process.env.APP_NAME,
   domain: process.env.APP_DOMAIN,
   port: process.env.APP_PORT,
+  corsUrl: process.env.APP_CORS_URL,
 }));

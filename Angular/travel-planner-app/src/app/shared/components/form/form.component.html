@@ -1,4 +1,4 @@
-<form [formGroup]="formFormGroup">
+<form [formGroup]="formFormGroup" (ngSubmit)="onSubminEvent.emit(null)">
   <app-mat-card
     [titleTemplate]="titleTemplate"
     [contentTemplate]="contentTemplate"

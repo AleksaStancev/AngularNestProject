@@ -3,6 +3,7 @@
   [contentTemplate]="contentTemplate"
   [actionsTemplate]="actionsTemplate"
   [formFormGroup]="userForm"
+  (onSubminEvent)="userFormOnSubmitEvent.emit(userForm)"
 ></app-form>
 
 <ng-template #titleTemplate>
@@ -39,6 +40,7 @@
   <app-button
     [buttonText]="buttonText"
     [buttonDisabled]="userForm.invalid"
+    buttonType="submit"
   ></app-button>
   <a
     mat-flat-button

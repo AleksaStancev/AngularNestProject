@@ -22,6 +22,7 @@ import {
           .default(appCfg_DefaultEnv_const),
         APP_DOMAIN: Joi.string().default(appCfg_DefaultDomain_const),
         APP_PORT: Joi.number().default(appCfg_DefaultPort_const),
+        APP_CORS_URL: Joi.string().uri().required(),
       }),
       validationOptions: { abortEarly: true },
     }),

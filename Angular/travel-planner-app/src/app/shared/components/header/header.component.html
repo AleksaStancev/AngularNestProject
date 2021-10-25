@@ -1,3 +1,10 @@
 <mat-toolbar>
   <span>Travel planner</span>
+  <button mat-icon-button [matMenuTriggerFor]="userMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #userMenu>
+    <button mat-menu-item>Update account</button>
+    <button mat-menu-item (click)="onLogout()">Logout</button>
+  </mat-menu>
 </mat-toolbar>

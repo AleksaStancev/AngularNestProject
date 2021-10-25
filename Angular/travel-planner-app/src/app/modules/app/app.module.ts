@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from 'src/app/core/core.module';
+import { HttpGeneralService } from 'src/app/core/services/http-general/http-general.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app.component';
 
@@ -11,9 +12,9 @@ import { AppComponent } from './components/app.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CoreModule, 
+    CoreModule,
   ],
-  providers: [],
+  providers: [HttpGeneralService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

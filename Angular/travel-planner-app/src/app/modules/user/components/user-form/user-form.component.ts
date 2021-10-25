@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegexProviderService } from 'src/app/core/services/regex-provider/regex-provider.service';
 import { ValidationErrorMessageProviderService } from 'src/app/core/services/validation-error-messages-provider/validation-error-message-provider.service';
@@ -15,7 +15,7 @@ export class UserFormComponent implements OnInit {
   @Input() buttonText: string = '';
   @Input() routerLinkValue: string = '';
   @Input() routerText: string = '';
-
+  @Output() userFormOnSubmitEvent: EventEmitter<FormGroup> = new EventEmitter();
   userForm!: FormGroup;
 
   constructor(

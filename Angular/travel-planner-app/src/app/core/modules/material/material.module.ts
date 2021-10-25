@@ -14,6 +14,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules = [
   MatCardModule,
@@ -30,6 +31,8 @@ const materialModules = [
   MatCheckboxModule,
   MatMenuModule,
   MatToolbarModule,
+  MatSnackBarModule,
+  MatDialogModule,
 ];
 
 @NgModule({

@@ -11,6 +11,7 @@ export class ButtonComponent implements OnInit {
   @Input() buttonText: string = '';
   @Input() buttonWidth: string = '100px';
   @Input() buttonHeight: string = 'fit-content';
+  @Input() buttonType: string = 'button';
   constructor() {}
 
   ngOnInit(): void {}

@@ -11,6 +11,10 @@ async function bootstrap() {
     app.get<AppConfigService>(AppConfigService);
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.use(cookieParser());
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    credentials: true,
+  });
   await app.listen(appConfig.port);
 }
 bootstrap();

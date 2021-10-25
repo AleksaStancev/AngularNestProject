@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatCardComponent } from '../mat-card/mat-card.component';
 
@@ -9,6 +9,9 @@ import { MatCardComponent } from '../mat-card/mat-card.component';
 })
 export class FormComponent extends MatCardComponent {
   @Input() formFormGroup!: FormGroup;
-
+  @Output() onSubminEvent: EventEmitter<any> = new EventEmitter();
+  
   ngOnInit(): void {}
+
+
 }
