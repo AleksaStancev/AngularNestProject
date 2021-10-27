@@ -20,13 +20,13 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post('create')
+  @Post('createuser')
   async create(@Body() userCredentialsDto: UserCredentialsDto) {
     await this.usersService.create(userCredentialsDto);
   }
 
   @UseGuards(JwtCookieGuard)
-  @Delete('delete')
+  @Delete('deleteuser')
   async remove(@Req() request: Request, @Res() response: Response) {
     await this.usersService.remove(request, response);
   }

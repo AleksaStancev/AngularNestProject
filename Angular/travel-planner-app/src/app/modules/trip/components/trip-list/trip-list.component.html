@@ -17,7 +17,7 @@
 </ng-template>
 
 <ng-template #actionsTemplate>
-  <app-button buttonText="Add trip" [buttonOnClick]="addItem"></app-button>
+  <app-button buttonText="Add trip" (buttonClicked)="addItem()"></app-button>
 </ng-template>
 
 <ng-template #listItemTemplate let-listItem="listItem">

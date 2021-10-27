@@ -2,7 +2,7 @@
   [disabled]="buttonDisabled"
   mat-raised-button
   color="primary"
-  (click)="buttonOnClick()"
+  (click)="buttonClicked.emit(null)"
   [style.width]="buttonWidth"
   [style.height]="buttonHeight"
   [type]="buttonType"

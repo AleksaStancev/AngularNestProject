@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpGeneralService } from 'src/app/core/services/http-general/http-general.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private httpService: HttpGeneralService<any>) {
-    console.log(httpService);
+  constructor(private httpService: HttpGeneralService) {}
+
+  updateUser(user: User): Observable<void> {
+    return this.httpService.put<void>('/auth/updateusercredentials', user);
   }
 
-  getUser() {
-    this.httpService.delete('/a').subscribe((data) => {});
+  deleteUser(): Observable<void> {
+    return this.httpService.delete<void>('/users/deleteuser');
+  }
+
+  registerUser(user: User): Observable<void> {
+    return this.httpService.post<void>('/users/createuser', user);
   }
 }

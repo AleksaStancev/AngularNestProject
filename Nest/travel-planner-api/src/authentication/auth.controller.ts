@@ -4,6 +4,7 @@ import {
   Get,
   Patch,
   Post,
+  Put,
   Req,
   Res,
   UseGuards,
@@ -24,6 +25,7 @@ export class AuthController {
   ): Promise<any> {
     return await this.authService.login(userCredentials, response);
   }
+
   @UseGuards(JwtCookieGuard)
   @Get('logout')
   async logout(@Res({ passthrough: true }) response: Response) {
@@ -31,7 +33,7 @@ export class AuthController {
   }
 
   @UseGuards(JwtCookieGuard)
-  @Patch('updateusercredentials')
+  @Put('updateusercredentials')
   async update(
     @Body() updateUserCredentialsDto: UpdateUserCredentialsDto,
     @Req() request: Request,
@@ -42,5 +44,10 @@ export class AuthController {
       request,
       response,
     );
+  }
+
+  @Get('isloggedin')
+  async isLoggedIn(@Req() request: Request, @Res() response: Response) {
+    await this.authService.isLoggedIn(request, response);
   }
 }

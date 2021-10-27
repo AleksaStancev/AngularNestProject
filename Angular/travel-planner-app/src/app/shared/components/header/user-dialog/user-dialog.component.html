@@ -1,0 +1,22 @@
+<app-dialog
+  [contentTemplate]="contentTemplate"
+  (dialogClosed)="dialogRef.close()"
+></app-dialog>
+
+<ng-template #contentTemplate>
+  <app-user-form
+    title="Update account"
+    buttonText="Update"
+    usernameAutocomplete="off"
+    usernameName="newUsername"
+    passwordAutocomplete="new-password"
+    passwordName="newPassword"
+    usernameLabel="New username"
+    usernamePlaceholder="New username"
+    passwordLabel="New password"
+    passwordPlaceholder="New password"
+    [fieldsRequired]="false"
+    (userFormOnSubmitEvent)="updateAccount($event)"
+  >
+  </app-user-form>
+</ng-template>

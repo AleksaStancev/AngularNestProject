@@ -15,10 +15,6 @@ export const userReducer = createReducer(
     ...state,
     isLoggedIn: true,
   })),
-  on(Actions.registerSucces, (state: UserLoginState) => ({
-    ...state,
-    isLoggedIn: true,
-  })),
   on(Actions.logoutSuccess, (state: UserLoginState) => ({
     ...state,
     isLoggedIn: false,

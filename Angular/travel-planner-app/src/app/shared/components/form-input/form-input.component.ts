@@ -23,6 +23,7 @@ export class FormInputComponent extends FormFieldComponent implements OnInit {
   @Input() inputFormControlName: string = '';
   @Input() inputValidationErrorMessages: Record<string, string> = {};
   @Input() textAreaRows: number = 15;
+  @Input() name: string = '';
 
   inputFormControl!: FormControl;
   constructor(public formInputTypesProvider: FormInputTypesProviderService) {

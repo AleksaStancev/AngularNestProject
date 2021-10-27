@@ -42,9 +42,11 @@ export class UsersService {
   }
 
   findOneFromCookie(request: Request) {
-    return this.findOne(
-      CookieHelper.getUsernameFromCookie(request, this.jwtService),
+    const username = CookieHelper.getUsernameFromCookie(
+      request,
+      this.jwtService,
     );
+    return username !== '' ? this.findOne(username) : null;
   }
 
   async update(
@@ -95,5 +97,9 @@ export class UsersService {
         expires: new Date(Date.now()),
       })
       .send();
+  }
+
+  async isLoggedIn(request: Request, response: Response): Promise<boolean> {
+    return (await this.findOneFromCookie(request)) != null;
   }
 }

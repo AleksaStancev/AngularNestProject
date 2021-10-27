@@ -6,8 +6,7 @@ export class CookieHelper {
     request: Request,
     jwtService: JwtService,
   ): string {
-    return jwtService.decode(request.cookies[jwtCfg_defaultCookieName_const])[
-      'username'
-    ];
+    const cookie = request.cookies[jwtCfg_defaultCookieName_const];
+    return cookie == null ? '' : jwtService.decode(cookie)['username'];
   }
 }

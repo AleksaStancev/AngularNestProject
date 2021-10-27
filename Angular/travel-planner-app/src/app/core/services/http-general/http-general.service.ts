@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class HttpGeneralService<ModelType> {
+export class HttpGeneralService {
   private url: string;
   private headers: HttpHeaders;
   constructor(public httpClient: HttpClient) {
@@ -14,7 +14,7 @@ export class HttpGeneralService<ModelType> {
     this.headers = new HttpHeaders();
   }
 
-  post(apiRoute: string, body: any): Observable<ModelType> {
+  post<ModelType>(apiRoute: string, body: any): Observable<ModelType> {
     return this.httpClient.post<ModelType>(`${this.url + apiRoute}`, body, {
       headers: this.headers,
       withCredentials: true,
@@ -22,7 +22,7 @@ export class HttpGeneralService<ModelType> {
     });
   }
 
-  get(apiRoute: string): Observable<ModelType> {
+  get<ModelType>(apiRoute: string): Observable<ModelType> {
     return this.httpClient.get<ModelType>(`${this.url + apiRoute}`, {
       headers: this.headers,
       withCredentials: true,
@@ -30,7 +30,7 @@ export class HttpGeneralService<ModelType> {
     });
   }
 
-  put(apiRoute: string, body: any): Observable<ModelType> {
+  put<ModelType>(apiRoute: string, body: any): Observable<ModelType> {
     return this.httpClient.put<ModelType>(`${this.url + apiRoute}`, body, {
       headers: this.headers,
       withCredentials: true,
@@ -38,7 +38,7 @@ export class HttpGeneralService<ModelType> {
     });
   }
 
-  delete(apiRoute: string): Observable<ModelType> {
+  delete<ModelType>(apiRoute: string): Observable<ModelType> {
     return this.httpClient.delete<ModelType>(`${this.url + apiRoute}`, {
       headers: this.headers,
       withCredentials: true,

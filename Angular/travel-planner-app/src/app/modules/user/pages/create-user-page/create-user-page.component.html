@@ -4,7 +4,11 @@
     buttonText="Signup"
     routerText="Already have an account?"
     routerLinkValue="/users/login"
-
+    usernameAutocomplete="off"
+    usernameName="newUsername"
+    passwordAutocomplete="new-password"
+    passwordName="newPassword"
+    (userFormOnSubmitEvent)="onCreateUser($event)"
   >
   </app-user-form>
 </div>

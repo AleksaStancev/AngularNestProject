@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class RegexProviderService {
   public readonly onlyOneCapitalOneLowercaseLetterAndOneNumber =
-    '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$';
+    '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$';
 
   constructor() {}
 }

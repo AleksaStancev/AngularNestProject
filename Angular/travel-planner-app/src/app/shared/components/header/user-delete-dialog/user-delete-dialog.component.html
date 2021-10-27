@@ -1,0 +1,20 @@
+<app-dialog
+  [contentTemplate]="contentTemplate"
+  (dialogClosed)="dialogRef.close()"
+></app-dialog>
+
+<ng-template #contentTemplate>
+  <div class="content-container">
+    <span>Are you sure you want to delete your account?</span>
+    <div class="action-buttons">
+      <app-button
+        buttonText="Yes"
+        (buttonClicked)="deleteAccount()"
+      ></app-button>
+      <app-button
+        buttonText="No"
+        (buttonClicked)="dialogRef.close()"
+      ></app-button>
+    </div>
+  </div>
+</ng-template>

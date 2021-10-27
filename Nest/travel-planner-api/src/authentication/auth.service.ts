@@ -40,6 +40,12 @@ export class AuthService {
       .send();
   }
 
+  async isLoggedIn(request: Request, response: Response) {
+    response
+      .status(200)
+      .send(await this.usersService.isLoggedIn(request, response));
+  }
+
   async updateCredentials(
     updateUserCredentialsDto: UpdateUserCredentialsDto,
     request: Request,

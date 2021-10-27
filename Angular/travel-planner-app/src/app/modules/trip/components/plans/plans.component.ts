@@ -19,7 +19,7 @@ export class PlansComponent implements OnInit {
   packingListFormControl!: FormControl;
   tripActivitiesFormControl!: FormControl;
   transportListFormControl!: FormControl;
-  tripName: string = 'Trip name';
+  tripName: string = 'Trip';
   constructor(
     private formBuilder: FormBuilder,
     public formInputTypesProvider: FormInputTypesProviderService,
@@ -52,9 +52,9 @@ export class PlansComponent implements OnInit {
           },
         ],
       ],
-      packingList: [''],
-      tripActivities: [''],
-      transportList: [''],
+      packingList: [[]],
+      tripActivities: [[]],
+      transportList: [[]],
     });
 
     this.neededDocumentsFormControl = this.plansForm.controls[
