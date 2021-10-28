@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { MaterialComponentsConfigProviderService } from 'src/app/core/services/material-components-config-provider/material-components-config-provider.service';
 import { UserService } from 'src/app/modules/user/services/user.service';
 import * as UserActions from './user.actions';
+import * as TripActions from '../trip/trip.actions';
 
 @Injectable()
 export class UserEffect {
@@ -82,13 +83,12 @@ export class UserEffect {
     { dispatch: false }
   );
 
-  logoutSuccessEffect$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(UserActions.logoutSuccess),
-        tap(() => this.router.navigate(['/users']))
-      ),
-    { dispatch: false }
+  logoutSuccessEffect$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.logoutSuccess),
+      tap(() => this.router.navigate(['/users'])),
+      mergeMap(() => [TripActions.tripDeselect()])
+    )
   );
 
   deleteAccountEffect$ = createEffect(() =>

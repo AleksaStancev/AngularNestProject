@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { VirtualScrollComponent } from '../virtual-scroll/virtual-scroll.component';
 
 @Component({
@@ -10,7 +11,7 @@ export class ClassicListComponent
   extends VirtualScrollComponent
   implements OnInit
 {
-  @Input() items: any[] = [];
+  @Input() items: Observable<any[]> = of([]);
   @Input() listItemTemplate!: TemplateRef<any>;
 
   constructor() {

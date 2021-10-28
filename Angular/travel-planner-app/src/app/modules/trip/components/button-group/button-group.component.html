@@ -1,5 +1,19 @@
 <div class="button-container">
-  <app-button buttonHeight="50px" buttonText="Update"></app-button>
-  <app-button buttonHeight="50px" buttonText="Next phase"></app-button>
-  <app-button buttonHeight="50px" buttonText="Delete"></app-button>
+  <app-button
+    buttonType="submit"
+    buttonHeight="50px"
+    [buttonText]="submitButtonText"
+  ></app-button>
+  <app-button
+    *ngIf="!submitOnly"
+    buttonHeight="50px"
+    buttonText="Next phase"
+    (buttonClicked)="nextPhaseEvent.emit(null)"
+  ></app-button>
+  <app-button
+    *ngIf="!submitOnly"
+    buttonHeight="50px"
+    buttonText="Delete"
+    (buttonClicked)="deleteEvent.emit(null)"
+  ></app-button>
 </div>

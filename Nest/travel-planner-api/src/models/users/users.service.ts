@@ -11,6 +11,7 @@ import { excMsg_usernameAlreadyExists_const } from 'src/common/constants/excepti
 import { jwtCfg_defaultCookieName_const } from 'src/common/constants/jwt-config.constants';
 import { CookieHelper } from 'src/common/helpers/cookie.helper';
 import { AppConfigService } from 'src/configuration/app-config/app-config.service';
+import { TripRepository } from '../trips/trip.repository';
 import { UpdateUserCredentialsDto } from './dto/update-user-credentials.dto';
 import { UserCredentialsDto } from './dto/user-credentials.dto';
 import { UserRepository } from './user.repository';
@@ -19,6 +20,7 @@ import { UserRepository } from './user.repository';
 export class UsersService {
   constructor(
     private readonly userRepository: UserRepository,
+    private readonly tripsRepository: TripRepository,
     private readonly jwtService: JwtService,
     private readonly appConfigService: AppConfigService,
   ) {}
@@ -84,11 +86,10 @@ export class UsersService {
   }
 
   async remove(request: Request, response: Response) {
-    const username = CookieHelper.getUsernameFromCookie(
-      request,
-      this.jwtService,
-    );
-    if (!(await this.userRepository.deleteOne({ username: username })))
+    const user = await this.findOneFromCookie(request);
+    if (!(await this.tripsRepository.deleteMany({ user: user._id })))
+      throw new BadRequestException();
+    if (!(await this.userRepository.deleteOne({ username: user.username })))
       throw new BadRequestException();
     response
       .cookie(jwtCfg_defaultCookieName_const, null, {

@@ -3,6 +3,7 @@
   [contentTemplate]="contentTemplate"
   [actionsTemplate]="actionsTemplate"
   [formFormGroup]="formFormGroup"
+  (onSubminEvent)="onSubmitEvent.emit(null)"
 >
 </app-form>
 
@@ -13,5 +14,9 @@
 </ng-template>
 
 <ng-template #actionsTemplate>
-  <app-button-group></app-button-group>
+  <app-button-group
+    [submitButtonText]="submitButtonText"
+    [submitOnly]="submitOnly"
+    (deleteEvent)="deleteTrip()"
+  ></app-button-group>
 </ng-template>

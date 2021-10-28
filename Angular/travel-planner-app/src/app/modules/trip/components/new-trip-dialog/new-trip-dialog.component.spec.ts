@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormControlComponent } from './form-control.component';
+import { NewTripDialogComponent } from './new-trip-dialog.component';
 
-describe('FormControlComponent', () => {
-  let component: FormControlComponent;
-  let fixture: ComponentFixture<FormControlComponent>;
+describe('NewTripDialogComponent', () => {
+  let component: NewTripDialogComponent;
+  let fixture: ComponentFixture<NewTripDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormControlComponent ]
+      declarations: [ NewTripDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormControlComponent);
+    fixture = TestBed.createComponent(NewTripDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

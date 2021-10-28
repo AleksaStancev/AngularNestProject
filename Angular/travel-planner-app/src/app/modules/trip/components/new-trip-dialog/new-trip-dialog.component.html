@@ -1,0 +1,13 @@
+<app-dialog
+  [contentTemplate]="contentTemplate"
+  (dialogClosed)="dialogRef.close()"
+>
+</app-dialog>
+
+<ng-template #contentTemplate>
+  <app-bucketlist
+    [submitOnly]="true"
+    submitButtonText="Add"
+    (onSubmitEvent)="addTrip($event)"
+  ></app-bucketlist>
+</ng-template>

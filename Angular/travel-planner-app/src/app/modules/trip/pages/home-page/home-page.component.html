@@ -1,13 +1,49 @@
 <app-header></app-header>
 <div class="centered-container-column">
+  <app-button
+    buttonWidth="200px"
+    buttonText="Add new trip"
+    (buttonClicked)="addNewTrip()"
+  ></app-button>
   <div class="list-container">
-    <app-trip-list title="Bucketlist" [trips]="items"></app-trip-list>
-    <app-trip-list title="Plans"></app-trip-list>
-    <app-trip-list title="In progress"></app-trip-list>
-    <app-trip-list title="Finished"></app-trip-list>
+    <app-trip-list
+      [listId]="0"
+      #tripList
+      title="Bucketlist"
+      [trips]="bucketlistTrips"
+      (tripSelectedEvent)="onTripSelected($event)"
+    ></app-trip-list>
+    <app-trip-list
+      (tripSelectedEvent)="onTripSelected($event)"
+      [listId]="1"
+      #tripList
+      title="Plans"
+    ></app-trip-list>
+    <app-trip-list
+      (tripSelectedEvent)="onTripSelected($event)"
+      [listId]="2"
+      #tripList
+      title="In progress"
+    ></app-trip-list>
+    <app-trip-list
+      (tripSelectedEvent)="onTripSelected($event)"
+      [listId]="3"
+      #tripList
+      title="Finished"
+    ></app-trip-list>
   </div>
 
   <div class="form-container">
-    <app-plans></app-plans>
+    <app-bucketlist
+      *ngIf="(selectedTripPhase | async) === tripPhase.bucketList"
+      [tripToDisplay]="selectedTrip"
+      (onSubmitEvent)="updateTrip($event)"
+    ></app-bucketlist>
+    <app-plans
+      *ngIf="(selectedTripPhase | async) === tripPhase.planningPhase"
+    ></app-plans>
+    <app-in-progress
+      *ngIf="(selectedTripPhase | async) === tripPhase.inProgress"
+    ></app-in-progress>
   </div>
 </div>

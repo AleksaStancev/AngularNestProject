@@ -2,6 +2,9 @@
   title="Bucketlist"
   [tripFormContentTemplate]="tripFormContentTemplate"
   [formFormGroup]="bucketlistForm"
+  (onSubmitEvent)="onSubmitEvent.emit(bucketlistForm)"
+  [submitOnly]="submitOnly"
+  [submitButtonText]="submitButtonText"
 >
 </app-trip-form>
 

@@ -1,13 +1,15 @@
 import {
-  Body, Controller,
+  Body,
+  Controller,
   Delete,
   Get,
+  HttpCode,
   Param,
   Patch,
   Post,
   Req,
   UseGuards,
-  UseInterceptors
+  UseInterceptors,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { SanitizeMongooseModelInterceptor } from 'nestjs-mongoose-exclude';
@@ -36,19 +38,21 @@ export class TripsController {
     return await this.tripsService.createBucketlistTrip(createTripDto, request);
   }
   @UseGuards(JwtCookieGuard)
-  @Delete('deletetrip')
-  async delete(@Body() tripId: IId, @Req() request: Request) {
-    return await this.tripsService.remove(tripId.id, request);
+  @Delete('deletetrip/:id')
+  async delete(@Param('id') tripId: string, @Req() request: Request) {
+    return await this.tripsService.remove(tripId, request);
   }
 
-  @Get()
-  findAll() {
-    return this.tripsService.findAll();
+  @UseGuards(JwtCookieGuard)
+  @Get('gettrips')
+  async getTrips(@Req() request: Request) {
+    return await this.tripsService.findAll(request);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tripsService.findOne(+id);
+  @UseGuards(JwtCookieGuard)
+  @Get('gettrip/:id')
+  async getBucketlist(@Param('id') id: string) {
+    return await this.tripsService.getTrip(id);
   }
 
   @Patch(':id')

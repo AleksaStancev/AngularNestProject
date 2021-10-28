@@ -7,10 +7,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { UserEffect } from './user/user.effects';
 import { UserService } from 'src/app/modules/user/services/user.service';
+import { tripReducer } from './trip/trip.reducer';
+import { TripEffects } from './trip/trip.effects';
 
 const storeModules = [
-  StoreModule.forRoot({ userLogin: userReducer }),
-  EffectsModule.forRoot([UserEffect]),
+  StoreModule.forRoot({ userLogin: userReducer, tripState: tripReducer }),
+  EffectsModule.forRoot([UserEffect, TripEffects]),
   StoreDevtoolsModule.instrument({
     maxAge: 20,
     logOnly: environment.production,

@@ -1,6 +1,13 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { MatSelectionList } from '@angular/material/list';
 import { ClassicListComponent } from '../classic-list/classic-list.component';
-import { VirtualScrollComponent } from '../virtual-scroll/virtual-scroll.component';
 
 @Component({
   selector: 'app-select-list',
@@ -12,10 +19,19 @@ export class SelectListComponent
   implements OnInit
 {
   @Input() multupleSelect: boolean = false;
+  @Output() selectionEvent: EventEmitter<any> = new EventEmitter();
+  @ViewChild('list') list!: MatSelectionList;
 
   constructor() {
     super();
   }
 
   ngOnInit(): void {}
+
+  clearSelect(): void {
+    this.list.deselectAll();
+  }
+  get selectedOption() {
+    return this.list.selectedOptions.selected[0];
+  }
 }

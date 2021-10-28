@@ -3,15 +3,13 @@ import {
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
+import { Request } from 'express';
+import { Types } from 'mongoose';
 import { TripPhase } from 'src/common/enumerations/trip-phase.enumeration';
-import { UserRepository } from '../users/user.repository';
 import { UsersService } from '../users/users.service';
 import { CreateBucketlistTripDto } from './dto/create-bucketlist-trip.dto';
 import { UpdateTripDto } from './dto/update-bucketlist-trip.dto';
-import { Trip, TripSchema } from './schema/trip.schema';
 import { TripRepository } from './trip.repository';
-import { Request } from 'express';
-import { Types } from 'mongoose';
 
 @Injectable()
 export class TripsService {
@@ -22,23 +20,53 @@ export class TripsService {
   public async createBucketlistTrip(
     createTripDto: CreateBucketlistTripDto,
     request: Request,
-  ): Promise<Trip> {
+  ) {
     const user = await this.usersService.findOneFromCookie(request);
     if (!user) throw new InternalServerErrorException();
-    return await this.tripRepository.create({
+    const createdTrip = await this.tripRepository.create({
       user: user,
       tripPhase: TripPhase.bucketList,
       tripName: createTripDto.tripName,
       ...createTripDto,
     });
+    return {
+      id: createdTrip.id,
+      tripName: createdTrip.tripName,
+      destinationCountry: createdTrip.destinationCountry,
+      destinationInCountry: createdTrip.destinationInCountry,
+      bucketlistNotes: createdTrip.bucketlistNotes,
+      tripPhase: createdTrip.tripPhase,
+    };
   }
 
-  findAll() {
-    return `This action returns all trips`;
+  async findAll(request: Request) {
+    const user = await this.usersService.findOneFromCookie(request);
+    if (!user) throw new InternalServerErrorException();
+    const trips = await this.tripRepository.find({ user: user._id });
+    return trips.map((createdTrip) => ({
+      id: createdTrip.id,
+      tripName: createdTrip.tripName,
+      tripPhase: createdTrip.tripPhase,
+      fetched: false,
+      bucketlistNotes: '',
+      destinationInCountry: '',
+      destinationCountry: '',
+    }));
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} trip`;
+  async getTrip(id: string) {
+    const foundTrip = await this.tripRepository.findOne({
+      _id: new Types.ObjectId(id),
+    });
+    return {
+      id: foundTrip.id,
+      tripName: foundTrip.tripName,
+      destinationCountry: foundTrip.destinationCountry,
+      destinationInCountry: foundTrip.destinationInCountry,
+      bucketlistNotes: foundTrip.bucketlistNotes,
+      tripPhase: foundTrip.tripPhase,
+      fetched: true,
+    };
   }
 
   update(id: number, updateTripDto: UpdateTripDto) {

@@ -10,7 +10,6 @@ export abstract class FormControlComponent {
 
   public getControl(formFieldFormControlName: string): FormControl {
     const formControl = this.parentFormGroup.get(formFieldFormControlName);
-
     return formControl != null
       ? (formControl as FormControl)
       : new FormControl();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/core/modules/store/app.state';
+import { tripDeselect } from 'src/app/core/modules/store/trip/trip.actions';
 import { logout } from 'src/app/core/modules/store/user/user.actions';
 import { MaterialComponentsConfigProviderService } from 'src/app/core/services/material-components-config-provider/material-components-config-provider.service';
 import { UserDeleteDialogComponent } from './user-delete-dialog/user-delete-dialog.component';

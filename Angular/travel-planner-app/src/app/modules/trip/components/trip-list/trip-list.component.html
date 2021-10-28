@@ -13,13 +13,13 @@
   <app-select-list
     [items]="trips"
     [listItemTemplate]="listItemTemplate"
+    (selectionEvent)="onSelect()"
+    #list
   ></app-select-list>
 </ng-template>
 
-<ng-template #actionsTemplate>
-  <app-button buttonText="Add trip" (buttonClicked)="addItem()"></app-button>
-</ng-template>
+<ng-template #actionsTemplate> </ng-template>
 
 <ng-template #listItemTemplate let-listItem="listItem">
-  {{ listItem }}
+  {{ listItem.tripName }}
 </ng-template>
